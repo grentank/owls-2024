@@ -30,6 +30,7 @@ module.exports = {
       { shopId: 4, productId: 1, price: 14 },
       { shopId: 4, productId: 2, price: 77 },
       { shopId: 4, productId: 3, price: 220 },
+      { shopId: 4, productId: 4, price: 5 },
     ]);
   },
 

@@ -1,4 +1,6 @@
-const { Shop, Product, ShopsProduct } = require('./db/models');
+// const { Shop, Product, ShopsProduct } = require('../db-old/models');
+
+const productService = require('./services/productService');
 
 async function run() {
   try {
@@ -27,15 +29,30 @@ async function run() {
     //   },
     // });
     // console.dir(JSON.parse(JSON.stringify(product)), { depth: null });
-    const product = await Product.findOne({
-      where: { title: 'Хлеб' },
-      include: {
-        model: Shop,
-        // attributes: ['shopId'],
-        // include: Shop,
-      },
+    // const product = await Product.findOne({
+    //   where: { title: 'Хлеб' },
+    //   include: {
+    //     model: Shop,
+    //     // attributes: ['shopId'],
+    //     // include: Shop,
+    //   },
+    // });
+
+    // await productService.createProductInShop({
+    //   shopName: 'Газмяс',
+    //   title: 'Тыква',
+    //   price: 39,
+    // });
+    // await productService.createProductInShop({
+    //   shopName: 'Газмяс',
+    //   title: 'Сыр',
+    //   price: 176,
+    // });
+
+    const products = await productService.getProductByShopName('Газмяс');
+    console.dir(JSON.parse(JSON.stringify(products)), {
+      depth: null,
     });
-    console.dir(JSON.parse(JSON.stringify(product.Shops.map(s => s.name))), { depth: null });
   } catch (error) {
     console.log(error);
   }
